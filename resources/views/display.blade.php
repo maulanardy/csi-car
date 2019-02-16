@@ -120,4 +120,32 @@
         </div>
     </div>
 </div>
+<script src="{!!url('/js/jquery.min.js')!!}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $down = 0;
+        $block = false;
+
+        setTimeout(function() {
+            $("html, body").animate({ scrollTop: 0 }, 500);
+        },100);
+
+        setTimeout(function() {
+            setInterval(function(){
+                if(!$block){
+                    console.log("down!")
+                    $("html, body").animate({ scrollTop: $down }, 10);
+                    $down = $down + 1;
+
+                    if($down >= $(document).height()){
+                        $block = true;
+                        setTimeout(function() {
+                           location.reload();
+                        },5000);
+                    } 
+                }
+            },10);
+        },5000);
+    })
+</script>
 @endsection
