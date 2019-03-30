@@ -6,13 +6,13 @@
         <div class="col-md-12">
             @foreach ($display as $k => $v)
                 <div class="card mb-3">
-                    <div class="card-header"><h4>{{$v->driver}}</h4></div>
+                    <div class="card-header" style="background:#88a5bd; color:#FFF"><h4>{{$k + 1}}. {{$v->driver}}<span class="clock float-right"></span></h4></div>
 
-                    <div class="card-body row">
+                    <div class="card-body row" style="background: #e6e6e6;">
                         <div class="col-md-4">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered bg-white">
                                 <thead>
-                                    <tr><th class="bg-secondary text-light">DONE</th></tr>
+                                    <tr><th class="bg-danger text-light">DONE</th></tr>
                                 </thead>
                                 <tbody>
                                     @if(count($v->tasks_done) == 0)
@@ -23,7 +23,7 @@
                                         <tr>
                                             <td>
                                                 <div class="mb-3">{{date('d F Y', strtotime($task->task_date_start))}}
-                                                <strong class="float-right">{{date('H:i', strtotime($task->task_date_start))}} - {{date('H:i', strtotime($task->task_date_end))}}</strong></div>
+                                                <strong class="float-right">{{date('H:i', strtotime($task->started_date))}} - {{date('H:i', strtotime($task->finished_date))}}</strong></div>
 
                                                 <table class="table table-borderless table-sm table-primary" style="background-color:#FFF">
                                                     <tr>
@@ -45,7 +45,7 @@
                             </table>
                         </div>
                         <div class="col-md-4">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered bg-white">
                                 <thead>
                                     <tr><th class="bg-success text-light">ON TRIP</th></tr>
                                 </thead>
@@ -80,9 +80,9 @@
                             </table>
                         </div>
                         <div class="col-md-4">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered bg-white">
                                 <thead>
-                                    <tr><th class="bg-secondary text-light">UPCOMING</th></tr>
+                                    <tr><th class="" style="background-color: #ffeaa7!important;">UPCOMING</th></tr>
                                 </thead>
                                 <tbody>
                                     @if(count($v->tasks_pending) == 0)
@@ -120,4 +120,11 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+function update() {
+  $('.clock').html(moment().format('H:mm:ss'));
+}
+
+setInterval(update, 1000);
+</script>
 @endsection
