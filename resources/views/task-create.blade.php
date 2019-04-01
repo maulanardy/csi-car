@@ -46,10 +46,6 @@
                         </div>
                         </div>
                         <div class="form-group">
-                          <label for="name">Deskripsi:</label>
-                          <textarea class="form-control" placeholder="Masukan keterangan kegiatan, lokasi tujuan, serta bersama siapa kegiatan berlangsung" name="task_description"></textarea>
-                        </div>
-                        <div class="form-group">
                             <label for="driver_id">Driver</label>
                             <select class="form-control" name="driver_id" id="driver_id">
                                 <option>-- Pilih Driver --</option>
