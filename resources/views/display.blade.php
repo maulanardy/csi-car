@@ -131,10 +131,11 @@
 
         setTimeout(function() {
             setInterval(function(){
+                console.log($down + " - " + $(document).height())
                 if(!$block){
                     console.log("down!")
-                    $("html, body").animate({ scrollTop: $down }, 10);
-                    $down = $down + 1;
+                    $("html, body").animate({ scrollTop: $down }, 100);
+                    $down = $down + 10;
 
                     if($down >= $(document).height()){
                         $block = true;
@@ -143,7 +144,7 @@
                         },5000);
                     } 
                 }
-            },10);
+            },100);
         },5000);
     })
     function update() {

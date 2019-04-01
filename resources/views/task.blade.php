@@ -5,9 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-success text-light">Today Task Lists</div>
+                <div class="card-header bg-success text-light">Today Task Lists <a href="{{url("task/create")}}" class="btn btn-light float-right">Request Mobil</a></div>
 
                 <div class="card-body">
+                    @if(session()->get('success'))
+                    <div class="alert alert-success">
+                      {{ session()->get('success') }}  
+                    </div><br />
+                    @endif
+
                     <table class="table table-bordered">
                         <thead class="thead-light">
                             <tr>
@@ -36,6 +42,8 @@
                                             <span class="badge badge-success">Complete</span>
                                         @elseif($task->is_started == 1)
                                             <span class="badge badge-warning">On Trip</span>
+                                        @elseif($task->is_draft == 0)
+                                            <span class="badge badge-primary">Approved</span>
                                         @else
                                             <span class="badge badge-danger">Pending</span>
                                         @endif

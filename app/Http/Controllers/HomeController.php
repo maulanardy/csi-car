@@ -37,7 +37,7 @@ class HomeController extends Controller
             });
             $obj->tasks_done  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_finished == 1;
-            });
+            })->sortByDesc("started_date")->take(1);
             $obj->tasks_pending  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_started == 0;
             });
@@ -64,7 +64,7 @@ class HomeController extends Controller
             });
             $obj->tasks_done  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_finished == 1;
-            });
+            })->sortByDesc("started_date")->take(1);
             $obj->tasks_pending  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_started == 0;
             });
