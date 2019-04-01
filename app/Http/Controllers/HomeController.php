@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tasks   = Tasks::whereDay('task_date_start', '>=', date('d'))->orderBy("task_date_start", "asc")->get();
+        $tasks   = Tasks::whereDate('task_date_start', '>=', date('Y-m-d'))->orderBy("task_date_start", "asc")->get();
         $drivers  = Drivers::get();
         $display = [];
 
@@ -52,7 +52,7 @@ class HomeController extends Controller
 
     public function display()
     {
-        $tasks   = Tasks::whereDay('task_date_start', '>=', date('d'))->orderBy("task_date_start", "asc")->get();
+        $tasks   = Tasks::whereDate('task_date_start', '>=', date('Y-m-d'))->orderBy("task_date_start", "asc")->get();
         $drivers  = Drivers::get();
         $display = [];
 
