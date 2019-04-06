@@ -64,7 +64,7 @@ class TaskController extends Controller
         $task->pic_phone        = $request->get('pic_phone');
         $task->is_started       = 0;
         $task->is_finished      = 0;
-        $task->is_draft         = 1;
+        $task->is_draft         = 0;
         $task->created_by       = 1;
 
         $task->save();
