@@ -32,6 +32,7 @@ class HomeController extends Controller
         foreach ($drivers as $key => $driver) {
             $obj         = new \stdClass();
             $obj->driver = $driver->name;
+            $obj->car    = $driver->car;
             $obj->tasks  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_started == 1 && $val->is_finished == 0;
             });
