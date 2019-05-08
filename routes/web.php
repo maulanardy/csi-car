@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/home2', 'HomeController@index2')->name('home2');
+
 Route::get('/display', 'HomeController@display')->name('display');
 
 Route::get('/driver', 'DriverController@index')->name('driver');

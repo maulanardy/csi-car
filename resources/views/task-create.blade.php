@@ -45,14 +45,25 @@
                           <input type="text" class="form-control clockpicker" id="task_time_end" name="task_time_end" placeholder="Kegiatan Berakhir" value="{{$taskTimeEnd}}">
                         </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-row">
+                        <div class="form-group col-md-6">
                             <label for="driver_id">Driver</label>
                             <select class="form-control" name="driver_id" id="driver_id">
                                 <option>-- Pilih Driver --</option>
                                 @foreach($drivers as $driver)
-                                    <option value="{{$driver->id}}">{{$driver->name}} - {{$driver->car->name}} {{$driver->car->license}}</option>
+                                    <option value="{{$driver->id}}">{{$driver->name}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="car_id">Mobil</label>
+                            <select class="form-control" name="car_id" id="car_id">
+                                <option>-- Pilih Mobil --</option>
+                                @foreach($cars as $car)
+                                    <option value="{{$car->id}}">{{$car->name}} {{$car->license}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         </div>
                         <div class="form-group">
                           <label for="name">Deskripsi:</label>

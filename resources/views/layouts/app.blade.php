@@ -47,7 +47,10 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Dashboard v1') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home2') }}">{{ __('Dashboard v2') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('task') }}">{{ __('Task') }}</a>

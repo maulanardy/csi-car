@@ -56,7 +56,8 @@ class TaskController extends Controller
     {
         $task = new Tasks();
         $task->driver_id        = $request->get('driver_id');
-        $task->car_id           = Drivers::find($request->get('driver_id'))->default_car_id;
+        // $task->car_id           = Drivers::find($request->get('driver_id'))->default_car_id;
+        $task->car_id           = $request->get('car_id');
         $task->task_date_start  = Carbon::parse($request->get('task_date_start') . " " . $request->get('task_time_start'))->format('Y-m-d H:i:s');
         $task->task_date_end    = Carbon::parse($request->get('task_date_end') . " " . $request->get('task_time_end'))->format('Y-m-d H:i:s');
         $task->task_description = $request->get('task_description');
@@ -64,7 +65,7 @@ class TaskController extends Controller
         $task->pic_phone        = $request->get('pic_phone');
         $task->is_started       = 0;
         $task->is_finished      = 0;
-        $task->is_draft         = 0;
+        $task->is_draft         = 1;
         $task->created_by       = 1;
 
         $task->save();
