@@ -6,10 +6,15 @@ use App\Tasks;
 use App\Drivers;
 use App\Cars;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'delete']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -66,7 +71,7 @@ class TaskController extends Controller
         $task->is_started       = 0;
         $task->is_finished      = 0;
         $task->is_draft         = 1;
-        $task->created_by       = 1;
+        $task->created_by       = Auth::id();
 
         $task->save();
         return redirect('/task')->with('success', 'Request berhasil dikirim');
