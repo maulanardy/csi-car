@@ -22,22 +22,25 @@
                                     @foreach ($v->tasks_done as $k => $task)
                                         <tr>
                                             <td>
-                                                <div class="mb-3">{{date('d F Y', strtotime($task->task_date_start))}}
-                                                <strong class="float-right">{{date('H:i', strtotime($task->started_date))}} - {{date('H:i', strtotime($task->finished_date))}}</strong></div>
+                                                <div class="mb-3">{{date('d F Y', strtotime($task->started_date))}}
+                                                <strong class="float-right">{{date('H:i', strtotime($task->started_date))}}</strong></div>
 
                                                 <table class="table table-borderless table-sm table-primary" style="background-color:#FFF">
                                                     <tr>
-                                                        <th>Mobil</th>
                                                         <td>{{$task->car->name}} - {{$task->car->license}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Request</th>
+                                                        <td>{{$task->driver->name}}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>{{$task->pic_name}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">{{$task->task_description}}</td>
+                                                        <td>{{$task->task_description}}</td>
                                                     </tr>
                                                 </table>
+                                                <div class="mb-3">{{date('d F Y', strtotime($task->finished_date))}}
+                                                <strong class="float-right">{{date('H:i', strtotime($task->finished_date))}}</strong></div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -57,20 +60,21 @@
                                     @foreach ($v->tasks as $k => $task)
                                         <tr>
                                             <td>
-                                                <div class="mb-3">{{date('d F Y', strtotime($task->task_date_start))}}
-                                                <strong class="float-right">{{date('H:i', strtotime($task->task_date_start))}} - {{date('H:i', strtotime($task->task_date_end))}}</strong></div>
+                                                <div class="mb-3">{{date('d F Y', strtotime($task->started_date))}}
+                                                <strong class="float-right">{{date('H:i', strtotime($task->started_date))}}</strong></div>
 
                                                 <table class="table table-borderless table-sm table-primary" style="background-color:#FFF">
                                                     <tr>
-                                                        <th>Mobil</th>
                                                         <td>{{$task->car->name}} - {{$task->car->license}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Request</th>
+                                                        <td>{{$task->driver->name}}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>{{$task->pic_name}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">{{$task->task_description}}</td>
+                                                        <td>{{$task->task_description}}</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -93,21 +97,24 @@
                                         <tr>
                                             <td>
                                                 <div class="mb-3">{{date('d F Y', strtotime($task->task_date_start))}}
-                                                <strong class="float-right">{{date('H:i', strtotime($task->task_date_start))}} - {{date('H:i', strtotime($task->task_date_end))}}</strong></div>
+                                                <strong class="float-right">{{date('H:i', strtotime($task->task_date_start))}}</strong></div>
 
                                                 <table class="table table-borderless table-sm table-primary" style="background-color:#FFF">
                                                     <tr>
-                                                        <th>Mobil</th>
                                                         <td>{{$task->car->name}} - {{$task->car->license}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Request</th>
+                                                        <td>{{$task->driver->name}}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>{{$task->pic_name}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">{{$task->task_description}}</td>
+                                                        <td>{{$task->task_description}}</td>
                                                     </tr>
                                                 </table>
+                                                <div class="mb-3">{{date('d F Y', strtotime($task->task_date_end))}}
+                                                <strong class="float-right">{{date('H:i', strtotime($task->task_date_end))}}</strong></div>
                                             </td>
                                         </tr>
                                     @endforeach
