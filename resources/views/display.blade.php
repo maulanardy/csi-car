@@ -32,7 +32,10 @@
                                                         <td>{{$task->driver->name}} - {{$task->driver->no_telp}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>{{$task->pic_name}} - {{$task->pic_phone}}</td>
+                                                        <td>({{$task->requestedBy->name}}) {{$task->pic_name}} - {{$task->pic_phone}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{{$task->task_description}}</td>
                                                     </tr>
                                                 </table>
                                                 <div class="mb-3">{{date('d F Y H:i', strtotime($task->started_date))}} - {{date('d F Y H:i', strtotime($task->finished_date))}}</div>
@@ -65,7 +68,10 @@
                                                         <td>{{$task->driver->name}} - {{$task->driver->no_telp}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>{{$task->pic_name}} - {{$task->pic_phone}}</td>
+                                                        <td>({{$task->requestedBy->name}}) {{$task->pic_name}} - {{$task->pic_phone}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{{$task->task_description}}</td>
                                                     </tr>
                                                 </table>
                                                 <div class="mb-3">{{date('d F Y H:i', strtotime($task->started_date))}}</div>
@@ -98,7 +104,7 @@
                                                         <td>{{$task->driver->name}} - {{$task->driver->no_telp}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>{{$task->pic_name}} - {{$task->pic_phone}}</td>
+                                                        <td>({{$task->requestedBy->name}}) {{$task->pic_name}} - {{$task->pic_phone}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>{{$task->task_description}}</td>

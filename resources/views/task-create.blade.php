@@ -18,16 +18,26 @@
                     <form method="post" action="{{ url('task') }}">
                         @csrf
                         <div class="form-group">
-                          <label for="pic_name">Nama:</label>
-                          <input type="text" class="form-control" name="pic_name"/>
+                            <label for="driver_id">Supir</label>
+                            <select class="form-control" name="driver_id" id="driver_id">
+                                <option>-- Pilih Supir --</option>
+                                @foreach($drivers as $driver)
+                                    <option value="{{$driver->id}}">{{$driver->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                          <label for="pic_phone">No Handphone:</label>
-                          <input type="text" class="form-control" name="pic_phone"/>
+                            <label for="car_id">Mobil</label>
+                            <select class="form-control" name="car_id" id="car_id">
+                                <option>-- Pilih Mobil --</option>
+                                @foreach($cars as $car)
+                                    <option value="{{$car->id}}">{{$car->name}} {{$car->license}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label for="task_date_start">Tanggal Mulai</label>
+                          <label for="task_date_start">Waktu Mulai Rncn</label>
                           <input type="text" class="form-control datepicker" id="task_date_start" name="task_date_start" placeholder="Mulai Kegiatan" value="{{$taskDateStart}}">
                         </div>
                         <div class="form-group col-md-6">
@@ -37,7 +47,7 @@
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label for="task_date_end">Tanggal Berakhir</label>
+                          <label for="task_date_end">Waktu Selesai Rncn</label>
                           <input type="text" class="form-control datepicker" id="task_date_end" name="task_date_end" placeholder="Kegiatan Berakhir" value="{{$taskDateEnd}}">
                         </div>
                         <div class="form-group col-md-6">
@@ -45,31 +55,19 @@
                           <input type="text" class="form-control clockpicker" id="task_time_end" name="task_time_end" placeholder="Kegiatan Berakhir" value="{{$taskTimeEnd}}">
                         </div>
                         </div>
-                        <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="driver_id">Driver</label>
-                            <select class="form-control" name="driver_id" id="driver_id">
-                                <option>-- Pilih Driver --</option>
-                                @foreach($drivers as $driver)
-                                    <option value="{{$driver->id}}">{{$driver->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="car_id">Mobil</label>
-                            <select class="form-control" name="car_id" id="car_id">
-                                <option>-- Pilih Mobil --</option>
-                                @foreach($cars as $car)
-                                    <option value="{{$car->id}}">{{$car->name}} {{$car->license}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        </div>
                         <div class="form-group">
-                          <label for="name">Deskripsi:</label>
+                          <label for="name">Tujuan:</label>
                           <textarea class="form-control" placeholder="Masukan keterangan kegiatan, lokasi tujuan, serta bersama siapa kegiatan berlangsung" name="task_description"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <div class="form-group">
+                          <label for="pic_name">Nama Tamu:</label>
+                          <input type="text" class="form-control" name="pic_name"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="pic_phone">No HP Tamu:</label>
+                          <input type="text" class="form-control" name="pic_phone"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>

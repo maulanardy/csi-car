@@ -16,4 +16,9 @@ class Tasks extends Model
   {
       return $this->belongsTo('App\Cars');
   }
+
+  public function requestedBy()
+  {
+    return $this->belongsTo('App\User', 'created_by');
+  }
 }
