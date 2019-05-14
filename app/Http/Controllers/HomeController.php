@@ -58,12 +58,19 @@ class HomeController extends Controller
         $display = [];
 
         foreach ($drivers as $key => $driver) {
+            $tasksUndone = Tasks::where('driver_id', $driver->id)->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();
+            
             $obj         = new \stdClass();
             $obj->driver = $driver->name;
             $obj->car    = $driver->car;
             $obj->tasks  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_started == 1 && $val->is_finished == 0;
             });
+
+            foreach ($tasksUndone as $tu) {
+                $obj->tasks[] = $tu;
+            }
+
             $obj->tasks_done  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_finished == 1;
             })->sortByDesc("started_date")->take(1);
@@ -86,11 +93,19 @@ class HomeController extends Controller
         $display = [];
 
         foreach ($drivers as $key => $driver) {
+            $tasksUndone = Tasks::where('driver_id', $driver->id)->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();
+            
             $obj         = new \stdClass();
             $obj->driver = $driver->name;
+            $obj->car    = $driver->car;
             $obj->tasks  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_started == 1 && $val->is_finished == 0;
             });
+
+            foreach ($tasksUndone as $tu) {
+                $obj->tasks[] = $tu;
+            }
+
             $obj->tasks_done  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_finished == 1;
             })->sortByDesc("started_date")->take(1);

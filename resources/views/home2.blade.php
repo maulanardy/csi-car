@@ -29,9 +29,6 @@
                                                         <td>{{$task->car->name}} - {{$task->car->license}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>{{$task->car->name}} - {{$task->car->license}}</td>
-                                                    </tr>
-                                                    <tr>
                                                         <td>{{$task->driver->name}} - {{$task->driver->no_telp}}</td>
                                                     </tr>
                                                     <tr>
@@ -61,9 +58,6 @@
                                                 <div class="mb-3">{{date('d F Y H:i', strtotime($task->task_date_start))}} - {{date('d F Y H:i', strtotime($task->task_date_end))}}</div>
 
                                                 <table class="table table-borderless table-sm table-primary" style="background-color:#FFF">
-                                                    <tr>
-                                                        <td>{{$task->car->name}} - {{$task->car->license}}</td>
-                                                    </tr>
                                                     <tr>
                                                         <td>{{$task->car->name}} - {{$task->car->license}}</td>
                                                     </tr>
