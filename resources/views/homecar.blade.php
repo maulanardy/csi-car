@@ -6,7 +6,7 @@
         <div class="col-md-12">
             @foreach ($display as $k => $v)
                 <div class="card mb-3">
-                    <div class="card-header" style="background:#88a5bd; color:#FFF"><h4>{{$k + 1}}. {{$v->driver->name}} ({{$v->driver->no_telp}}) - {{$v->car->name}}<span class="clock float-right"></span></h4></div>
+                    <div class="card-header" style="background:#88a5bd; color:#FFF"><h4>{{$k + 1}}. {{$v->car->name}} - {{$v->car->license}} - {{$v->car->driver->name}}<span class="clock float-right"></span></h4></div>
 
                     <div class="card-body row" style="background: #e6e6e6;">
                         <div class="col-md-4">
@@ -123,36 +123,10 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $down = 0;
-        $block = false;
+function update() {
+  $('.clock').html(moment().format('H:mm:ss'));
+}
 
-        setTimeout(function() {
-            $("html, body").animate({ scrollTop: 0 }, 500);
-        },100);
-
-        setTimeout(function() {
-            setInterval(function(){
-                console.log($down + " - " + $(document).height())
-                if(!$block){
-                    console.log("down!")
-                    $("html, body").animate({ scrollTop: $down }, 100);
-                    $down = $down + 10;
-
-                    if($down >= $(document).height()){
-                        $block = true;
-                        setTimeout(function() {
-                           location.reload();
-                        },5000);
-                    } 
-                }
-            },100);
-        },5000);
-    })
-    function update() {
-    $('.clock').html(moment().format('H:mm:ss'));
-    }
-
-    setInterval(update, 1000);
+setInterval(update, 1000);
 </script>
 @endsection

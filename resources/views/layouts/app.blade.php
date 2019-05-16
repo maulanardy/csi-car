@@ -45,19 +45,22 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Dashboard v1') }}</a>
+                            <a class="nav-link {{Request::is('home') ? 'active' : ''}}" href="{{ route('home') }}">{{ __('Dashboard v1') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home2') }}">{{ __('Dashboard v2') }}</a>
+                            <a class="nav-link {{Request::is('home2') ? 'active' : ''}}" href="{{ route('home2') }}">{{ __('Dashboard v2') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('task') }}">{{ __('Task') }}</a>
+                            <a class="nav-link {{Request::is('homecar') ? 'active' : ''}}" href="{{ route('homecar') }}">{{ __('Display CAR') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('driver') }}">{{ __('Driver') }}</a>
+                            <a class="nav-link {{Request::is('task*') ? 'active' : ''}}" href="{{ url('task') }}">{{ __('Task') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('car') }}">{{ __('Car') }}</a>
+                            <a class="nav-link {{Request::is('driver') ? 'active' : ''}}" href="{{ route('driver') }}">{{ __('Driver') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{Request::is('car') ? 'active' : ''}}" href="{{ route('car') }}">{{ __('Car') }}</a>
                         </li>
                         <!-- Authentication Links -->
                         @auth

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tasks;
 use App\Drivers;
+use App\Cars;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -58,10 +59,10 @@ class HomeController extends Controller
         $display = [];
 
         foreach ($drivers as $key => $driver) {
-            $tasksUndone = Tasks::where('driver_id', $driver->id)->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();
+            $tasksUndone = Tasks::where('driver_id', $driver->id)->whereDate('task_date_start', '<', date('Y-m-d'))->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();
             
             $obj         = new \stdClass();
-            $obj->driver = $driver->name;
+            $obj->driver = $driver;
             $obj->car    = $driver->car;
             $obj->tasks  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_started == 1 && $val->is_finished == 0;
@@ -93,10 +94,10 @@ class HomeController extends Controller
         $display = [];
 
         foreach ($drivers as $key => $driver) {
-            $tasksUndone = Tasks::where('driver_id', $driver->id)->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();
+            $tasksUndone = Tasks::where('driver_id', $driver->id)->whereDate('task_date_start', '<', date('Y-m-d'))->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();
             
             $obj         = new \stdClass();
-            $obj->driver = $driver->name;
+            $obj->driver = $driver;
             $obj->car    = $driver->car;
             $obj->tasks  = $tasks->filter(function ($val, $key) use ($driver) {
                 return $val->driver_id == $driver->id && $val->is_started == 1 && $val->is_finished == 0;
@@ -117,6 +118,41 @@ class HomeController extends Controller
         }
 
         return view('display', [
+            'display' => $display,
+        ]);
+    }
+
+    public function car()
+    {
+        $tasks   = Tasks::whereDate('task_date_start', '>=', date('Y-m-d'))->orderBy("task_date_start", "asc")->get();
+        $cars    = Cars::get();
+        $display = [];
+
+        foreach ($cars as $key => $car) {
+            $tasksUndone = Tasks::where('car_id', $car->id)->whereDate('task_date_start', '<', date('Y-m-d'))->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();
+            
+            $obj         = new \stdClass();
+            // $obj->driver = $driver->name;
+            $obj->car    = $car;
+            $obj->tasks  = $tasks->filter(function ($val, $key) use ($car) {
+                return $val->car_id == $car->id && $val->is_started == 1 && $val->is_finished == 0;
+            });
+
+            foreach ($tasksUndone as $tu) {
+                $obj->tasks[] = $tu;
+            }
+
+            $obj->tasks_done  = $tasks->filter(function ($val, $key) use ($car) {
+                return $val->car_id == $car->id && $val->is_finished == 1;
+            })->sortByDesc("started_date")->take(1);
+            $obj->tasks_pending  = $tasks->filter(function ($val, $key) use ($car) {
+                return $val->car_id == $car->id && $val->is_started == 0;
+            });
+
+            $display[] = $obj;
+        }
+
+        return view('homecar', [
             'display' => $display,
         ]);
     }
