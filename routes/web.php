@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('/car', 'CarController@index')->name('car');
 
-	Route::get('/summary', 'CarController@index')->name('summary');
+	Route::get('/summary', 'SummaryController@index')->name('summary');
 
 	Route::resources([
 	    'task' => 'TaskController',
