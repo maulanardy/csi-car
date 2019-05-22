@@ -24,6 +24,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/clockpicker/bootstrap-clockpicker.min.css') }}" rel="stylesheet">
+    <style type="text/css">
+      a.nav-link.active {
+        font-weight: bold;
+        color: #1796ff!important;
+      }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -44,23 +50,26 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{Request::is('home') ? 'active' : ''}}" href="{{ route('home') }}">{{ __('Dashboard v1') }}</a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link {{Request::is('homecar') ? 'active' : ''}}" href="{{ route('homecar') }}">{{ __('Monitor Mobil') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{Request::is('home2') ? 'active' : ''}}" href="{{ route('home2') }}">{{ __('Dashboard v2') }}</a>
+                            <a class="nav-link {{Request::is('home2') ? 'active' : ''}}" href="{{ route('home2') }}">{{ __('Monitor Supir') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{Request::is('homecar') ? 'active' : ''}}" href="{{ route('homecar') }}">{{ __('Display CAR') }}</a>
+                            <a class="nav-link {{Request::is('summary') ? 'active' : ''}}" href="{{ route('summary') }}">{{ __('Kgt Supir Mobil') }}</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{Request::is('task*') ? 'active' : ''}}" href="{{ url('task') }}">{{ __('Task') }}</a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link {{Request::is('driver') ? 'active' : ''}}" href="{{ route('driver') }}">{{ __('Supir') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{Request::is('driver') ? 'active' : ''}}" href="{{ route('driver') }}">{{ __('Driver') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{Request::is('car') ? 'active' : ''}}" href="{{ route('car') }}">{{ __('Car') }}</a>
+                            <a class="nav-link {{Request::is('car') ? 'active' : ''}}" href="{{ route('car') }}">{{ __('Mobil') }}</a>
                         </li>
                         <!-- Authentication Links -->
                         @auth

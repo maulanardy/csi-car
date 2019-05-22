@@ -13,20 +13,29 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
+Route::group(['middleware' => 'auth'], function(){
 
-Route::get('/home', 'HomeController@index')->name('home');
+	// Route::get('/', 'HomeController@index');
+	Route::get('/', function () {
+	  return redirect('homecar');
+	});
 
-Route::get('/home2', 'HomeController@index2')->name('home2');
+	Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/homecar', 'HomeController@car')->name('homecar');
+	Route::get('/home2', 'HomeController@index2')->name('home2');
 
-Route::get('/display', 'HomeController@display')->name('display');
+	Route::get('/homecar', 'HomeController@car')->name('homecar');
 
-Route::get('/driver', 'DriverController@index')->name('driver');
+	Route::get('/display', 'HomeController@display')->name('display');
 
-Route::get('/car', 'CarController@index')->name('car');
+	Route::get('/driver', 'DriverController@index')->name('driver');
 
-Route::resources([
-    'task' => 'TaskController',
-]);
+	Route::get('/car', 'CarController@index')->name('car');
+
+	Route::get('/summary', 'CarController@index')->name('summary');
+
+	Route::resources([
+	    'task' => 'TaskController',
+	]);
+
+});

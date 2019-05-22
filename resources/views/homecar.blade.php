@@ -12,7 +12,7 @@
                         <div class="col-md-4">
                             <table class="table table-bordered bg-white">
                                 <thead>
-                                    <tr><th class="bg-danger text-light">DONE</th></tr>
+                                    <tr><th class="bg-danger text-light">Tugas Selesai</th></tr>
                                 </thead>
                                 <tbody>
                                     @if(count($v->tasks_done) == 0)
@@ -22,7 +22,11 @@
                                     @foreach ($v->tasks_done as $k => $task)
                                         <tr>
                                             <td>
-                                                <div class="mb-3">{{date('d F Y H:i', strtotime($task->task_date_start))}} - {{date('d F Y H:i', strtotime($task->task_date_end))}}</div>
+                                                <div class="mb-3">
+                                                    <span style="color:#379bef">{{date('d F Y H:i', strtotime($task->task_date_start))}}</span>
+                                                    - 
+                                                    {{date('d F Y H:i', strtotime($task->task_date_end))}}
+                                                </div>
 
                                                 <table class="table table-borderless table-sm table-primary" style="background-color:#FFF">
                                                     <tr>
@@ -48,7 +52,7 @@
                         <div class="col-md-4">
                             <table class="table table-bordered bg-white">
                                 <thead>
-                                    <tr><th class="bg-success text-light">ON TRIP</th></tr>
+                                    <tr><th class="bg-success text-light">Sedang Bertugas</th></tr>
                                 </thead>
                                 <tbody>
                                     @if(count($v->tasks) == 0)
@@ -58,7 +62,11 @@
                                     @foreach ($v->tasks as $k => $task)
                                         <tr>
                                             <td>
-                                                <div class="mb-3">{{date('d F Y H:i', strtotime($task->task_date_start))}} - {{date('d F Y H:i', strtotime($task->task_date_end))}}</div>
+                                                <div class="mb-3">
+                                                    <span style="color:#379bef">{{date('d F Y H:i', strtotime($task->task_date_start))}}</span>
+                                                    - 
+                                                    {{date('d F Y H:i', strtotime($task->task_date_end))}}
+                                                </div>
 
                                                 <table class="table table-borderless table-sm table-primary" style="background-color:#FFF">
                                                     <tr>
@@ -84,7 +92,7 @@
                         <div class="col-md-4">
                             <table class="table table-bordered bg-white">
                                 <thead>
-                                    <tr><th class="" style="background-color: #ffeaa7!important;">UPCOMING</th></tr>
+                                    <tr><th class="" style="background-color: #ffeaa7!important;">Tugas Selanjutnya</th></tr>
                                 </thead>
                                 <tbody>
                                     @if(count($v->tasks_pending) == 0)
@@ -94,8 +102,12 @@
                                     @foreach ($v->tasks_pending as $k => $task)
                                         <tr>
                                             <td>
-                                                <div class="mb-3">{{date('d F Y H:i', strtotime($task->task_date_start))}} - {{date('d F Y H:i', strtotime($task->task_date_end))}}</div>
-
+                                                <div class="mb-3">
+                                                    <span style="color:#379bef">{{date('d F Y H:i', strtotime($task->task_date_start))}}</span>
+                                                    - 
+                                                    {{date('d F Y H:i', strtotime($task->task_date_end))}}
+                                                </div>
+                                                
                                                 <table class="table table-borderless table-sm table-primary" style="background-color:#FFF">
                                                     <tr>
                                                         <td>{{$task->car->name}} - {{$task->car->license}}</td>
