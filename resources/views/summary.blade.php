@@ -98,10 +98,6 @@
                   <!-- /.table-responsive -->
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                  <a href="" class="btn btn-sm btn-danger btn-flat pull-right">Lihat semua kegiatan</a>
-                </div>
-                <!-- /.box-footer -->
               </div>
               <div class="box box-warning">
                 <div class="box-header with-border">
@@ -146,10 +142,6 @@
                   <!-- /.table-responsive -->
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                  <a href="" class="btn btn-sm btn-warning btn-flat pull-right">Lihat semua kegiatan</a>
-                </div>
-                <!-- /.box-footer -->
               </div>
 
             </div>
