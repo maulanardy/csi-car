@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('content')
 <div class="w-100 p-3">
@@ -24,7 +24,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="table-responsive">
-                    <table class="table no-margin table-bordered">
+                    <table class="table no-margin">
                       <thead>
                       <tr>
                         <th>No</th>
@@ -68,7 +68,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="table-responsive">
-                    <table class="table no-margin table-bordered">
+                    <table class="table no-margin">
                       <thead>
                       <tr>
                         <th>No</th>
@@ -116,7 +116,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="table-responsive">
-                    <table class="table no-margin table-bordered">
+                    <table class="table no-margin">
                       <thead>
                       <tr>
                         <th>No</th>
@@ -169,7 +169,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="table-responsive">
-                    <table class="table no-margin table-bordered">
+                    <table class="table no-margin">
                       <thead>
                       <tr>
                         <th>No</th>
@@ -211,7 +211,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="table-responsive">
-                    <table class="table no-margin table-bordered">
+                    <table class="table no-margin">
                       <thead>
                       <tr>
                         <th>No</th>

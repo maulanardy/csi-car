@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/AdminLTE-2.3.11
+/public/vendor
 /storage/*.key
 /vendor
 .env
