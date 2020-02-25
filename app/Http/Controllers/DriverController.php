@@ -24,7 +24,7 @@ class DriverController extends Controller
      */
     public function index()
     {
-        $drivers = Drivers::all();
+        $drivers = Drivers::where("is_active", 1)->get();
 
         return view('driver', [
             'drivers' => $drivers

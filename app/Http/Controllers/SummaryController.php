@@ -16,7 +16,7 @@ class SummaryController extends Controller
      */
     public function index()
     {
-        $data['drivers']       = Drivers::all();
+        $data['drivers']       = Drivers::where("is_active", 1)->get();
         $data['cars']          = Cars::all();
         $data['driversOnDuty'] = Drivers::where("is_ontrip", "=", 1)->get();
         $data['tasksOngoing'] = Tasks::where("is_started","=",1)

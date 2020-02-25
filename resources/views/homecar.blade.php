@@ -6,7 +6,7 @@
         <div class="col-md-12">
             @foreach ($display as $k => $v)
                 <div class="card mb-3">
-                    <div class="card-header" style="background:#88a5bd; color:#FFF"><h4>{{$k + 1}}. {{$v->car->name}} - {{$v->car->license}} - {{$v->car->driver->name}}<span class="clock float-right"></span></h4></div>
+                    <div class="card-header" style="background:#88a5bd; color:#FFF"><h4>{{$k + 1}}. {{$v->car->name}} - {{$v->car->license}} - {{$v->car->driver->is_active == 1 ? $v->car->driver->name : ""}}<span class="clock float-right"></span></h4></div>
 
                     <div class="card-body row" style="background: #e6e6e6;">
                         <div class="col-md-4">

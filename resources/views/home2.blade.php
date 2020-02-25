@@ -43,6 +43,7 @@
                                                     </tr>
                                                 </table>
                                                 <div class="mb-3">{{date('d F Y H:i', strtotime($task->started_date))}} - {{date('d F Y H:i', strtotime($task->finished_date))}}</div>
+                                                <div class="mb-3">Lokasi Selesai: <a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{$task->finished_latitude}},{{$task->finished_longitude}}">Lihat</a></div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -83,6 +84,7 @@
                                                     </tr>
                                                 </table>
                                                 <div class="mb-3">{{date('d F Y H:i', strtotime($task->started_date))}}</div>
+                                                <div class="mb-3">Lokasi Mulai : <a target="_blank" href="https://www.google.com/maps?q={{$task->started_latitude}},{{$task->started_longitude}}&ll={{$task->started_latitude}},{{$task->started_longitude}}&z=12">Lihat</a></div>
                                             </td>
                                         </tr>
                                     @endforeach

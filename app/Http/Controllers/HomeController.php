@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $tasks   = Tasks::whereDate('task_date_start', '>=', date('Y-m-d'))->orderBy("task_date_start", "asc")->get();
-        $drivers  = Drivers::get();
+        $drivers  = Drivers::where("is_active", 1)->get();
         $display = [];
 
         foreach ($drivers as $key => $driver) {
@@ -55,8 +55,17 @@ class HomeController extends Controller
     public function index2()
     {
         $tasks   = Tasks::whereDate('task_date_start', '>=', date('Y-m-d'))->orderBy("task_date_start", "asc")->get();
-        $drivers  = Drivers::get();
+        $drivers  = Drivers::where("is_active", 1)->get();
+
         $display = [];
+
+        foreach ($drivers as $key => $driver) {
+            //pindahkan tanpa supir ke terakhir
+            if($driver->name == "Tanpa Supir") {
+                unset($drivers[$key]);
+                $drivers[] = $driver;
+            }
+        }
 
         foreach ($drivers as $key => $driver) {
             $tasksUndone = Tasks::where('driver_id', $driver->id)->whereDate('task_date_start', '<', date('Y-m-d'))->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();
@@ -90,8 +99,16 @@ class HomeController extends Controller
     public function display()
     {
         $tasks   = Tasks::whereDate('task_date_start', '>=', date('Y-m-d'))->orderBy("task_date_start", "asc")->get();
-        $drivers  = Drivers::get();
+        $drivers  = Drivers::where("is_active", 1)->get();
         $display = [];
+
+        foreach ($drivers as $key => $driver) {
+            //pindahkan tanpa supir ke terakhir
+            if($driver->name == "Tanpa Supir") {
+                unset($drivers[$key]);
+                $drivers[] = $driver;
+            }
+        }
 
         foreach ($drivers as $key => $driver) {
             $tasksUndone = Tasks::where('driver_id', $driver->id)->whereDate('task_date_start', '<', date('Y-m-d'))->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();
@@ -127,6 +144,14 @@ class HomeController extends Controller
         $tasks   = Tasks::whereDate('task_date_start', '>=', date('Y-m-d'))->orderBy("task_date_start", "asc")->get();
         $cars    = Cars::get();
         $display = [];
+
+        foreach ($cars as $key => $car) {
+            //pindahkan tanpa mobil ke terakhir
+            if($car->name == "Tanpa Mobil") {
+                unset($cars[$key]);
+                $cars[] = $car;
+            }
+        }
 
         foreach ($cars as $key => $car) {
             $tasksUndone = Tasks::where('car_id', $car->id)->whereDate('task_date_start', '<', date('Y-m-d'))->where('is_draft', 0)->where('is_started', 1)->where('is_finished', 0)->orderBy("task_date_start", "asc")->get();

@@ -43,7 +43,7 @@ class TaskController extends Controller
 
         return view('task-create', [
             "cars" => Cars::all(),
-            "drivers" => Drivers::all(),
+            "drivers" => Drivers::where("is_active", 1)->get(),
             "taskDateStart" => $start->format('d F Y'),
             "taskTimeStart" => $start->format('H:i'),
             "taskDateEnd" => $end->format('d F Y'),

@@ -12,13 +12,13 @@ class Drivers extends Model
   	'name',
   	'username',
   	'password',
-		'picture',
-		'no_telp',
-		'default_car_id',
-		'is_available',
-		'is_ontrip',
-		'created_by',
-		'is_active'
+	'picture',
+	'no_telp',
+	'default_car_id',
+	'is_available',
+	'is_ontrip',
+	'created_by',
+	'is_active'
 	];
 
   public function car()
